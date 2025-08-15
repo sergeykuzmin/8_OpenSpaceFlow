@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Open Space Flow{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <p style="text-align: justify;">Aliquam ultricies leo ac erat dignissim, id tincidunt neque finibus. Praesent sodales est ex, et finibus nisl consequat nec. Donec interdum lorem quis arcu varius, vitae lobortis metus venenatis. Aliquam mollis consectetur odio non tristique. Mauris eget varius lacus. Proin vel felis orci. Mauris euismod libero molestie cursus elementum. Curabitur nec mollis sapien. Proin eget magna sollicitudin, pretium nibh accumsan, scelerisque eros. Maecenas ante erat, pretium a est nec, elementum lobortis tellus. Ut sem diam, dignissim et molestie ac, fringilla in magna. Morbi at varius tellus. Nullam sit amet pretium ante. Curabitur varius elementum sollicitudin.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Registered members</h3>
+            <div class="row">
+            {% for member in object_list %}
+                <div class="col-sm-3 mb-3 mb-sm-0">
+                    {% include 'elements/member.html' %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

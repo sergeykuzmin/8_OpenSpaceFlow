@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Open Space Flow members{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3>Registered members</h3>
+            <div class="row">
+            {% for member in object_list %}
+                <div class="col-sm-3 mb-3 mb-sm-0">
+                    {% include 'elements/member.html' %}
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

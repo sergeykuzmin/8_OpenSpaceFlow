@@ -1,15 +1,26 @@
 from django.contrib import admin
 
-from .models import Member, MemberSkill, Skill
+from .models import Image, Member, MemberSkill, Skill
 
-# Register your models here.
-# admin.site.register(Member)
 admin.site.register(Skill)
 admin.site.register(MemberSkill)
 
 
+class MemberSkillInline(admin.TabularInline):
+    model = MemberSkill
+    fields = ["skill", "level"]
+    extra = 0
+
+
+class ImageInline(admin.TabularInline):
+    model = Image
+    fields = ["url", "sort"]
+    extra = 0
+
+
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
+    inlines = [MemberSkillInline, ImageInline]
     list_display = (
         "id",
         "username",
@@ -21,7 +32,3 @@ class MemberAdmin(admin.ModelAdmin):
         "date_joined",
         "last_login",
     )
-    # fields = ('username', 'skill_level_field')
-
-    # filter_horizontal = ('skill_level',)
-    raw_id_fields = ("skill_level",)

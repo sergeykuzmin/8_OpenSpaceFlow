@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ member.first_name }} on Open Space Flow{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8 pt-5" style="margin: auto;">
+            <div class="card">
+                <div class="card-header">{{ member.last_name }} {{ member.first_name }}</div>
+                <ul class="list-group list-group-horizontal">
+                {% for image in member.images.all %}
+                    <li class="list-group-item">
+                        <img src="{{ MEDIA_URL }}{{ image.url }}" class="m-2 w-100" style="border: 1px solid #ccc;" />
+                    </li>
+                {% endfor %}
+                </ul>
+                <div class="card-body">
+                    <p class="card-text">First name: {{ member.first_name }}</p>
+                    <p class="card-text">Last name: {{ member.last_name }}</p>
+                    <p class="card-text">Gender: {{ member.gender }}</p>
+                    <p class="card-text">Assigned place: {{ member.place }}</p>
+                </div>
+
+                <div class="card-header">Skills</div>
+                <ul class="list-group list-group-flush">
+                {% for skill in member.member_skills.all %}
+                    <li class="list-group-item">{{ skill.skill }} - {{ skill.level }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

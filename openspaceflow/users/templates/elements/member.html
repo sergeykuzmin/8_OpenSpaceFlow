@@ -1,0 +1,17 @@
+<div class="card text-center">
+    <div class="card-header">{{ member.last_name }} {{ member.first_name }}</div>
+    {% for image in member.images.all|slice:":1" %}
+        <img src="{{ MEDIA_URL }}{{ image.url }}" alt="Image of {{ member.last_name }} {{ member.first_name }}">
+    {% endfor %}
+
+    <ul class="list-group list-group-flush">
+    {% for skill in member.member_skills.all %}
+        <li class="list-group-item">{{ skill.skill }} - {{ skill.level }}</li>
+    {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+    <div class="card-footer">
+        <a href="{% url 'member:member_detail' member.id %}">Details</a>
+    </div>
+    {% endif %}
+</div>

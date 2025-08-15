@@ -14,17 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import debug_toolbar
-from django.conf import settings
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 
-urlpatterns = [
-    path("", include("users.urls", namespace="member")),
-    path("admin/", admin.site.urls),
-    path("__debug__/", include(debug_toolbar.urls)),
-]
+from .views import SpaceDetailView, SpaceListView
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#
+# app_name = 'spaces'
+#
+# urlpatterns = [
+# 	path('', SpaceListView.as_view(), name='space_list'),
+# 	path('space/<int:pk>/', SpaceDetailView.as_view(), name='space_detail'),
+# ]

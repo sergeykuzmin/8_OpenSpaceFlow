@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Open space flow{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body class="container">
+        <header>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'member:member_list' %}">Members</a>
+                </li>
+            </ul>
+             <h1 class="text-center">Welcome to Open Space Flow</h1>
+        </header>
+        <main class="row">
+            <div class="col">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+        <footer>
+            <p class="text-center mt-5 pt-5">&copy; 2025 Open space flow</p>
+        </footer>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    </body>
+</html>
