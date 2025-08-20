@@ -36,15 +36,15 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "users",
+    "spaces",
+    "debug_toolbar",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "users",
-    "spaces",
-    "debug_toolbar",
     "django_cleanup.apps.CleanupConfig",
 ]
 

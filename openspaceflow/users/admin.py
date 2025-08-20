@@ -28,6 +28,7 @@ class MemberAdmin(admin.ModelAdmin):
         "first_name",
         "gender",
         "email",
+        "place",
         "is_active",
         "date_joined",
         "last_login",
