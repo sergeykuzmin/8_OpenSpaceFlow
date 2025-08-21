@@ -28,9 +28,11 @@ class MemberListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(
-            is_active=True, is_superuser=False, is_staff=False
-        ).prefetch_related("images")
+        queryset = (
+            queryset.filter(is_active=True, is_superuser=False, is_staff=False)
+            .prefetch_related("images")
+            .order_by("-employment_date")
+        )
 
         return queryset
 

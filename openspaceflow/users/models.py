@@ -64,6 +64,8 @@ class Member(AbstractUser):
         # if current member has 'Testing' skill so needs to find 'Backend' or 'Frontend' otherwise - 'Testing'
         if user.skill.name == "Testing":
             find_skill = ["Backend", "Frontend"]
+        elif user.skill.name == "Manager":
+            find_skill = ["no_one"]
 
         place_left = int(self.place.number) - 1
         place_right = int(self.place.number) + 1
@@ -78,7 +80,8 @@ class Member(AbstractUser):
 
         if members_count > 0:
             raise ValidationError(
-                "It is forbidden to seat testers and programmers next to each other"
+                "It is forbidden to seat testers and programmers next to each other",
+                "testers and programmers",
             )
 
         return cleaned_data
