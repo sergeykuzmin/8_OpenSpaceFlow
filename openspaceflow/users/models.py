@@ -18,7 +18,10 @@ class Skill(models.Model):
 
 class Member(AbstractUser):
     gender = models.CharField(
-        "Gender", max_length=10, choices=[("Male", "Male"), ("Female", "Female")]
+        "Gender",
+        max_length=10,
+        choices=[("Male", "Male"), ("Female", "Female")],
+        default="Male",
     )
     middle_name = models.CharField("Middle name", max_length=128, blank=True)
     info = models.TextField(blank=True, max_length=1024, verbose_name="Description")
@@ -32,7 +35,9 @@ class Member(AbstractUser):
         unique=True,
     )
     modified = models.DateTimeField(auto_now=True, null=True)
-    employment_date = models.DateTimeField(auto_created=True, null=True)
+    employment_date = models.DateTimeField(
+        auto_created=True, null=True, auto_now_add=True
+    )
 
     @property
     def experience(self):
@@ -58,6 +63,9 @@ class Member(AbstractUser):
             .order_by("-level")
             .first()
         )
+
+        if not hasattr(user, "skill"):
+            return cleaned_data
 
         find_skill = ["Testing"]
 
